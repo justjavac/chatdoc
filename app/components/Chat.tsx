@@ -4,11 +4,16 @@ import { useState } from "react";
 import type { ChatCompletionRequestMessage } from "openai";
 import { Message } from "./Message";
 import { Input } from "./Input";
+import { ProjectInfo } from "./ProjectInfo";
 import { requestChatStream } from "../utils";
-import { Feature } from "./Feature";
 import { useScrollToBottom } from "../hooks";
+import type { Database } from "@/types/supabase";
 
-export function Chat() {
+export interface ChatProps {
+  project: Database["public"]["Tables"]["project"]["Row"];
+}
+
+export function Chat({ project }: ChatProps) {
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [messageRef, setAutoScroll, onWheel] = useScrollToBottom();
 
@@ -49,7 +54,7 @@ export function Chat() {
 
   return (
     <div className="flex flex-col h-full">
-      {messages.length === 0 && <Feature />}
+      {messages.length === 0 && <ProjectInfo {...project} />}
       <div
         ref={messageRef}
         className="flex-1 grid grid-cols-12 auto-rows-max gap-y-2 py-4 overflow-y-scroll"
@@ -59,7 +64,7 @@ export function Chat() {
           <Message key={index} {...message} />
         ))}
       </div>
-      <Input onSubmit={handleInput} loading={false} />
+      {project.hash && <Input onSubmit={handleInput} loading={false} />}
     </div>
   );
 }

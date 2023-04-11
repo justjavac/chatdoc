@@ -3,34 +3,29 @@ import { notFound } from "next/navigation";
 import { supabase } from "../utils";
 
 export async function generateStaticParams() {
-  const { data: projects = [] } = await supabase.from("project").select("slug");
+  const { data: projects } = await supabase.from("project").select("slug");
 
-  return (
-    projects?.map(({ slug }) => ({
-      slug,
-    })) ?? []
-  );
+  if (projects == null) {
+    return [];
+  }
+
+  return projects.map(({ slug }) => ({ slug }));
 }
 
-export default async function Page({
-  params: { slug },
-}: {
+interface PageProps {
   params: { slug: string };
-}) {
-  const { data, error } = await supabase
-    .from("page")
-    .select(
-      `
-      project!inner (
-        id
-      )
-    `
-    )
-    .eq("project.slug", slug);
+}
 
-  if (!data || data.length === 0) {
+export default async function Page({ params: { slug } }: PageProps) {
+  const { data, error } = await supabase
+    .from("project")
+    .select('*')
+    .eq("slug", slug)
+    .single();
+
+  if (data == null) {
     notFound();
   }
 
-  return <Chat />;
+  return <Chat project={data} />;
 }

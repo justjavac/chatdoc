@@ -20,9 +20,9 @@ export function Project({
           isActive ? "bg-gray-100 dark:bg-gray-800 group/active" : ""
         }`}
       >
-        <div className="p-1 rounded h-10 w-10 dark:bg-white">
+        <div className="p-1 rounded h-10 w-10 bg-gray-100">
           <img
-            className="h-8 w-8 max-w-none"
+            className="h-8 w-8 rounded-full max-w-none"
             width="32"
             height="32"
             src={logo!}

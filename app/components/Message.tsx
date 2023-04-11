@@ -1,6 +1,11 @@
+import dynamic from "next/dynamic";
 import { ChatCompletionRequestMessageRoleEnum } from "openai";
 import { Deno, OpenAI, User } from "./Icons";
-import { Markdown } from "./Markdown";
+
+const Markdown = dynamic(
+  () => import("./Markdown").then((mod) => mod.Markdown),
+  { ssr: false }
+);
 
 export interface MessageProps {
   content: string;

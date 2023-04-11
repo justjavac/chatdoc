@@ -11,12 +11,15 @@ export const metadata: Metadata = {
   themeColor: "#f8fafc",
 };
 
-export default async function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
-  const { data: projects, error } = await supabase.from("project").select();
+}
+
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const { data: projects, error } = await supabase
+    .from("project")
+    .select()
+    .order("id", { ascending: true });
 
   return (
     <html>
