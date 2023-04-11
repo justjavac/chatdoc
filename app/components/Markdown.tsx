@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import ReactMarkdown from "react-markdown";
 import RemarkMath from "remark-math";
@@ -11,7 +11,8 @@ export function Markdown(props: { children: string }) {
   return (
     <ReactMarkdown
       remarkPlugins={[RemarkMath, RemarkGfm]}
-      rehypePlugins={[RehypeKatex, RehypePrsim]}
+      rehypePlugins={[RehypeKatex, [RehypePrsim, { ignoreMissing: true }]]}
+      linkTarget="_blank"
     >
       {props.children}
     </ReactMarkdown>
