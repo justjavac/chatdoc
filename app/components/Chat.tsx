@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import type {
-  ChatCompletionRequestMessage,
-} from "openai";
+import type { ChatCompletionRequestMessage } from "openai";
 import { Message } from "./Message";
 import { Input } from "./Input";
 import { requestChatStream } from "../utils";
 import { Feature } from "./Feature";
+import { useScrollToBottom } from "../hooks";
 
 export function Chat() {
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [messageRef, setAutoScroll, onWheel] = useScrollToBottom();
 
   const updateLastMessage = (message: ChatCompletionRequestMessage) => {
     setMessages((messages) => {
@@ -23,6 +23,7 @@ export function Chat() {
   };
 
   const handleInput = async (content: string) => {
+    setAutoScroll(true);
     const userMessage: ChatCompletionRequestMessage = {
       role: "user",
       content: content,
@@ -49,7 +50,11 @@ export function Chat() {
   return (
     <div className="flex flex-col h-full">
       {messages.length === 0 && <Feature />}
-      <div className="flex-1 grid grid-cols-12 auto-rows-max gap-y-2 py-4 overflow-y-scroll">
+      <div
+        ref={messageRef}
+        className="flex-1 grid grid-cols-12 auto-rows-max gap-y-2 py-4 overflow-y-scroll"
+        onWheel={onWheel}
+      >
         {messages.map((message, index) => (
           <Message key={index} {...message} />
         ))}

@@ -5,11 +5,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "embed": "tsx scripts/embed.ts"
+    "embed": "jiti scripts/embed.ts"
   },
   "dependencies": {
     "common-tags": "^1.8.2",
-    "next": "^13.2.3",
+    "next": "^13.3.0",
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,29 +21,29 @@
     "sse.js": "^0.6.1"
   },
   "devDependencies": {
-    "@next/env": "^13.2.4",
-    "@supabase/supabase-js": "^2.14.0",
+    "@next/env": "^13.3.0",
+    "@supabase/supabase-js": "^2.17.0",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "@types/common-tags": "^1.8.1",
     "@types/lodash.merge": "^4.6.7",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.33",
+    "@types/react": "^18.0.34",
     "@types/react-dom": "^18.0.11",
     "@types/react-katex": "^3.0.0",
     "autoprefixer": "^10.4.14",
     "encoding": "^0.1.13",
     "github-slugger": "^2.0.0",
     "gpt-3-encoder": "^1.1.4",
+    "jiti": "^1.18.2",
     "lodash": "^4.17.21",
     "mdast-util-mdx": "^2.0.1",
     "micromark-extension-mdxjs": "^1.0.0",
     "openapi-types": "^12.1.0",
     "postcss": "^8.4.21",
-    "supabase": "^1.49.3",
+    "supabase": "^1.50.2",
     "tailwindcss": "^3.3.1",
-    "tsx": "^3.12.6",
-    "typescript": "^5.0.3",
+    "typescript": "^5.0.4",
     "unist-builder": "^3.0.1"
   }
 }
