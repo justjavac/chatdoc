@@ -1,6 +1,6 @@
-import { Chat } from "../components/Chat";
 import { notFound } from "next/navigation";
-import supabase from "../utils/supabase";
+import { Chat } from "@/components/Chat";
+import supabase from "@/utils/supabase";
 
 export async function generateStaticParams() {
   const { data: projects } = await supabase.from("project").select("slug");

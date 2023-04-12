@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Header } from "./components/Header";
-import { Project } from "./components/Project";
-import "./css/globals.css";
-import supabase from "./utils/supabase";
+import { Header } from "@/components/Header";
+import { Project } from "@/components/Project";
+import supabase from "@/utils/supabase";
+import "@/css/globals.css";
 
 export const metadata: Metadata = {
   title: "ChatDoc",

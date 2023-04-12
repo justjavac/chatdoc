@@ -1,4 +1,4 @@
-import { Heart } from "./components/Icons";
+import { Heart } from "@/components/Icons";
 
 export default async function Page() {
   return (
