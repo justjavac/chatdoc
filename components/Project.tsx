@@ -14,9 +14,11 @@ export function Project({
   const isActive = slug === segment;
 
   return (
-    <Link href={`/${slug}`}>
-      <li
-        className={`group flex items-center w-full p-4 cursor-pointer ${
+    <li role="menuitem">
+      <Link
+        href={`/${slug}`}
+        role="link"
+        className={`group flex items-center w-full p-4 ${
           isActive ? "bg-gray-100 dark:bg-gray-800 group/active" : ""
         }`}
       >
@@ -40,16 +42,16 @@ export function Project({
             {name}
           </strong>
           <div
-            className={`group-hover:text-slate-700 dark:group-hover:text-slate-300 truncate ${
+            className={`group-hover:text-slate-900 dark:group-hover:text-white truncate ${
               isActive
                 ? "text-slate-700 dark:text-slate-300"
-                : "text-slate-500"
+                : "text-slate-500 dark:text-slate-300"
             }`}
           >
             {description}
           </div>
         </div>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 }
