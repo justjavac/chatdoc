@@ -5,6 +5,7 @@ import { getEdgeFunctionUrl } from "./getEdgeFunctionUrl";
 const edgeFunctionUrl = getEdgeFunctionUrl()!;
 
 export function requestChatStream(
+  project_id: number,
   query: string,
   options?: {
     filterBot?: boolean;
@@ -18,7 +19,7 @@ export function requestChatStream(
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
       "Content-Type": "application/json",
     },
-    payload: JSON.stringify({ query, context: "" }),
+    payload: JSON.stringify({ query, project_id, context: "" }),
   });
 
   eventSource.addEventListener("error", options?.onError as any);

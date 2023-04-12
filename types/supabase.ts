@@ -106,6 +106,7 @@ export interface Database {
       }
       match_page_sections: {
         Args: {
+          project_id: number
           embedding: string
           match_threshold: number
           match_count: number

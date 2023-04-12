@@ -34,7 +34,7 @@ export function Chat({ project }: ChatProps) {
       content: content,
     };
     setMessages([...messages, userMessage]);
-    requestChatStream(content, {
+    requestChatStream(project.id, content, {
       onMessage(content, done) {
         const assistantMessage: ChatCompletionRequestMessage = {
           role: "assistant",
