@@ -28,7 +28,7 @@ export function Input(props: {
       <textarea
         tabIndex={0}
         rows={1}
-        className="form-textarea m-0 w-full h-16 text-sm resize-none border-0 bg-transparent p-0 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent pl-2 dark:invert"
+        className="form-textarea m-0 w-full h-16 text-sm resize-none border-0 bg-transparent p-0 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent pl-2 dark:invert dark:placeholder:text-slate-900"
         onInput={(e) => setUserInput(e.currentTarget.value)}
         value={userInput}
         onKeyDown={(e) => onInputKeyDown(e as any)}

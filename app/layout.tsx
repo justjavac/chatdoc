@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     .order("id", { ascending: true });
 
   return (
-    <html>
+    <html lang="en">
       <head>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <script
@@ -43,8 +43,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <body className="flex flex-col h-screen dark:bg-gray-800 antialiased min-h-screen">
         <Header />
         <div className="flex flex-1">
-          <aside className="w-80 dark:bg-gray-900 border-r dark:border-none">
-            <ul role="list" className="flex flex-col text-sm overflow-y-auto">
+          <aside role="menubar" className="w-80 dark:bg-gray-900 border-r dark:border-none">
+            <ul role="menu" className="flex flex-col text-sm overflow-y-auto">
               {(projects ?? []).map((x) => (
                 <Project key={x.slug} {...x} />
               ))}
