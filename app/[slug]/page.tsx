@@ -1,6 +1,6 @@
 import { Chat } from "../components/Chat";
 import { notFound } from "next/navigation";
-import { supabase } from "../utils";
+import supabase from "../utils/supabase";
 
 export async function generateStaticParams() {
   const { data: projects } = await supabase.from("project").select("slug");
@@ -19,7 +19,7 @@ interface PageProps {
 export default async function Page({ params: { slug } }: PageProps) {
   const { data, error } = await supabase
     .from("project")
-    .select('*')
+    .select("*")
     .eq("slug", slug)
     .single();
 

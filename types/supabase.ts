@@ -13,38 +13,29 @@ export interface Database {
         Row: {
           checksum: string | null
           id: number
-          meta: Json | null
-          parent_page_id: number | null
           path: string
           project_id: number
           source: string | null
-          type: string | null
         }
         Insert: {
           checksum?: string | null
           id?: number
-          meta?: Json | null
-          parent_page_id?: number | null
           path: string
           project_id: number
           source?: string | null
-          type?: string | null
         }
         Update: {
           checksum?: string | null
           id?: number
-          meta?: Json | null
-          parent_page_id?: number | null
           path?: string
           project_id?: number
           source?: string | null
-          type?: string | null
         }
       }
       page_section: {
         Row: {
           content: string | null
-          embedding: unknown | null
+          embedding: string | null
           heading: string | null
           id: number
           page_id: number
@@ -53,7 +44,7 @@ export interface Database {
         }
         Insert: {
           content?: string | null
-          embedding?: unknown | null
+          embedding?: string | null
           heading?: string | null
           id?: number
           page_id: number
@@ -62,7 +53,7 @@ export interface Database {
         }
         Update: {
           content?: string | null
-          embedding?: unknown | null
+          embedding?: string | null
           heading?: string | null
           id?: number
           page_id?: number
@@ -70,62 +61,36 @@ export interface Database {
           token_count?: number | null
         }
       }
-      pg: {
-        Row: {
-          content: string | null
-          content_length: number | null
-          content_tokens: number | null
-          embedding: unknown | null
-          id: number
-          method: string | null
-          operation_id: string | null
-          summary: string | null
-          tag: string | null
-        }
-        Insert: {
-          content?: string | null
-          content_length?: number | null
-          content_tokens?: number | null
-          embedding?: unknown | null
-          id?: number
-          method?: string | null
-          operation_id?: string | null
-          summary?: string | null
-          tag?: string | null
-        }
-        Update: {
-          content?: string | null
-          content_length?: number | null
-          content_tokens?: number | null
-          embedding?: unknown | null
-          id?: number
-          method?: string | null
-          operation_id?: string | null
-          summary?: string | null
-          tag?: string | null
-        }
-      }
       project: {
         Row: {
           description: string | null
+          hash: string | null
           id: number
           logo: string | null
           name: string
+          repo: string | null
           slug: string
+          website: string | null
         }
         Insert: {
           description?: string | null
+          hash?: string | null
           id?: number
           logo?: string | null
           name: string
+          repo?: string | null
           slug: string
+          website?: string | null
         }
         Update: {
           description?: string | null
+          hash?: string | null
           id?: number
           logo?: string | null
           name?: string
+          repo?: string | null
           slug?: string
+          website?: string | null
         }
       }
     }
@@ -133,17 +98,6 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      get_page_parents: {
-        Args: {
-          page_id: number
-        }
-        Returns: {
-          id: number
-          parent_page_id: number
-          path: string
-          meta: Json
-        }[]
-      }
       ivfflathandler: {
         Args: {
           "": unknown
@@ -152,7 +106,7 @@ export interface Database {
       }
       match_page_sections: {
         Args: {
-          embedding: unknown
+          embedding: string
           match_threshold: number
           match_count: number
           min_content_length: number
@@ -168,7 +122,7 @@ export interface Database {
       }
       pg_search: {
         Args: {
-          query_embedding: unknown
+          query_embedding: string
           similarity_threshold: number
           match_count: number
         }
@@ -188,29 +142,29 @@ export interface Database {
         Args: {
           "": number[]
         }
-        Returns: unknown
+        Returns: string
       }
       vector_dims: {
         Args: {
-          "": unknown
+          "": string
         }
         Returns: number
       }
       vector_norm: {
         Args: {
-          "": unknown
+          "": string
         }
         Returns: number
       }
       vector_out: {
         Args: {
-          "": unknown
+          "": string
         }
         Returns: unknown
       }
       vector_send: {
         Args: {
-          "": unknown
+          "": string
         }
         Returns: string
       }

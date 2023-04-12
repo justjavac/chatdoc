@@ -3,7 +3,7 @@ import Script from "next/script";
 import { Header } from "./components/Header";
 import { Project } from "./components/Project";
 import "./css/globals.css";
-import { supabase } from "./utils";
+import supabase from "./utils/supabase";
 
 export const metadata: Metadata = {
   title: "ChatDoc",
