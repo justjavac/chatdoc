@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "std/": "https://deno.land/std@0.181.0/",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.13.0",
+    "gpt3-tokenizer": "https://esm.sh/gpt3-tokenizer@1.1.5",
+    "common-tags": "https://esm.sh/common-tags@1.8.2",
+    "openai": "https://esm.sh/openai@3.2.1",
+    "xhr": "https://deno.land/x/xhr@0.3.0/mod.ts"
+  }
+}
