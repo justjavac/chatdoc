@@ -27,14 +27,12 @@ export class SSE {
     })
       .then((response) => {
         if (!response.body) {
-          console.log("no body");
           return;
         }
         const reader = response.body.getReader();
         return this.#readStream(reader);
       })
       .catch((error) => {
-        console.error(error);
         const event = new MessageEvent("error", { data: error });
         this.dispatchEvent(event);
       });
@@ -45,7 +43,6 @@ export class SSE {
   ): Promise<void> {
     return reader.read().then(({ done, value }) => {
       if (done) {
-        console.log("done");
         return;
       }
 

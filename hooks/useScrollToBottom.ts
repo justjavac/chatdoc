@@ -30,10 +30,6 @@ export function useScrollToBottom() {
   const ref = useRef<HTMLDivElement>(null);
   const [autoScroll, setAutoScroll] = useState(true);
 
-  const onScroll: UIEventHandler<HTMLDivElement> = useCallback((e) => {
-    console.log("onScroll", e);
-  }, []);
-
   const onWheel: WheelEventHandler<HTMLDivElement> = useCallback((e) => {
     // if scroll up, disable auto scroll
     if (e.deltaY < 0) {

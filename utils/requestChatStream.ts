@@ -21,7 +21,6 @@ export function requestChatStream(
   let answer = "";
   eventSource.addEventListener("message", (e: MessageEvent<string>) => {
     try {
-      console.log(e)
       if (e.data === "[DONE]") {
         options?.onMessage(answer, true);
         return;
@@ -35,7 +34,6 @@ export function requestChatStream(
           completionResponse.choices?.[0].delta.content ?? "");
       options?.onMessage(answer, false);
     } catch (error) {
-      console.log(error)
       eventSource.close();
       options?.onError(error as Error);
     }
