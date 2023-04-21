@@ -18,8 +18,7 @@
     "rehype-prism-plus": "^1.5.1",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
-    "server-only": "^0.0.1",
-    "sse.js": "^0.6.1"
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@next/env": "^13.3.0",
